@@ -1,0 +1,39 @@
+/vendor/
+/node_modules/
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Laravel y entorno
+/.env
+/.env.*.local
+/.env.local
+/.env.backup
+Homestead.json
+Homestead.yaml
+/.fleet
+/.vscode/*
+!.vscode/extensions.json
+
+# Compilados y cachés
+/public/hot
+/public/storage
+/storage/*.key
+/storage/app/public
+/storage/debugbar
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+/bootstrap/cache/*.php
+.phpunit.result.cache
+
+# Sistemas
+.DS_Store
+Thumbs.db
+
+# Composer / PHP
+composer.lock
+
+# Frontend build (si usas Vite/Laravel Mix)
+public/build
