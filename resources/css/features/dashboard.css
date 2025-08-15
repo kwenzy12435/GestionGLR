@@ -1,0 +1,60 @@
+/* ====== PALETA (coral GLR) ====== */
+/* base */
+:root { --brand: #FA785F; }
+/* matices usando color-mix (fallbacks incluidos) */
+:root { --brand-600: #f46b50; --brand-700: #e45d44; --brand-soft: #ffe3dd; }
+@supports (color: color-mix(in srgb, #000 10%, #fff)) {
+  :root {
+    --brand-600: color-mix(in srgb, var(--brand) 92%, black);
+    --brand-700: color-mix(in srgb, var(--brand) 85%, black);
+    --brand-soft: color-mix(in srgb, var(--brand) 16%, white);
+  }
+}
+
+/* modo oscuro/claro: que respeten el background de Bootstrap */
+[data-bs-theme="dark"] .card-elev { background: var(--bs-dark-bg-subtle); }
+[data-bs-theme="light"] .card-elev { background: var(--bs-body-bg); }
+
+/* ====== UTILIDADES ====== */
+.bg-brand       { background-color: var(--brand) !important; }
+.bg-brand-700   { background-color: var(--brand-700) !important; }
+.bg-brand-soft  { background-color: var(--brand-soft) !important; }
+.text-brand     { color: var(--brand) !important; }
+
+.btn-brand {
+  --bs-btn-bg: var(--brand);
+  --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand-700);
+  --bs-btn-hover-border-color: var(--brand-700);
+  --bs-btn-color: #fff;
+}
+.btn-outline-brand {
+  --bs-btn-color: var(--brand);
+  --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand);
+  --bs-btn-hover-border-color: var(--brand);
+  --bs-btn-hover-color: #fff;
+}
+
+/* ====== KPIs ====== */
+.kpi .card-body{ padding:16px }
+.kpi-icon{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background: var(--brand-soft); color: var(--brand-700);
+}
+.kpi-icon svg{ width:22px;height:22px; }
+.kpi-label{ font-size:.82rem; color: var(--bs-secondary-color); text-transform:uppercase; letter-spacing:.5px }
+.kpi-value{ font-weight:800; font-size:1.4rem; line-height:1 }
+.kpi-trend{ font-size:.8rem }
+
+/* ====== TABLA ====== */
+table thead th{
+  background: var(--brand-soft);
+  color: var(--brand-700);
+  border-bottom: 0;
+  text-transform: uppercase;
+  font-size: .78rem;
+  letter-spacing: .4px;
+}
+.badge.bg-brand-soft { background: var(--brand-soft) !important; }
+.text-brand { color: var(--brand) !important; }

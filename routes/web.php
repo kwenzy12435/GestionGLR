@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;    
 
-/* Invitados (no logueados) */
+
 Route::middleware('guest')->group(function () {
     Route::get('/', fn() => redirect('/login')); // raíz -> login
     Route::get('/login',    [AuthController::class, 'showLogin'])->name('login');
@@ -15,11 +15,12 @@ Route::middleware('guest')->group(function () {
     Route::post('/register',[AuthController::class, 'register'])->name('register.post');
 });
 
-/* Autenticados */
+/* INICIO SESION */
 Route::middleware('auth')->group(function () {
-    // Tu dashboard (puede ser el HomeController que ya hicimos)
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-    // Logout
+   Route::get('/', fn () => view('dashboard'))->name('dashboard');
+
+
+    // cerrar sesion
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

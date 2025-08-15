@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="es" data-bs-theme="dark">
 <head>
+   @stack('styles')
   <!-- META -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title', 'GLR · Gestionador TI')</title>
-
+   
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -52,7 +53,7 @@
     @media (max-width: 992px) { .split-line { border-left: 0; } }
   </style>
 
-  <!-- SCRIPTS: tema + ojito -->
+  <!-- SCRIPTS -->
   <script>
     // Persistencia del tema
     (() => {
@@ -89,6 +90,7 @@
 </head>
 
 <body class="bg-body text-body">
+  @stack('scripts')
   <div class="container container-app py-3">
 
     <!-- HEADER -->
@@ -130,7 +132,7 @@
     </footer>
   </div>
 
-  <!-- ICONOS del ojito (bonitos) -->
+  <!-- ICONOS del ojo -->
   <svg style="display:none">
     <symbol id="i-eye" viewBox="0 0 24 24" fill="none">
       <path d="M2.036 12.322a1 1 0 0 1 0-.644C3.423 7.51 7.254 5 12 5s8.577 2.51 9.964 6.678a1 1 0 0 1 0 .644C20.577 16.49 16.746 19 12 19S3.423 16.49 2.036 12.322Z" stroke="currentColor" stroke-width="1.6"/>
