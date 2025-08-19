@@ -1,0 +1,49 @@
+/* ===== TOKENS ===== */
+:root{ --brand:#FA785F; }
+.container-app { max-width: 1200px; }
+
+/* ===== HEADER ===== */
+.app-header { background: var(--bs-body-bg); }
+.brand img { height: 36px; width:auto; }
+.brand-title{
+  font-weight:800; font-size:1.15rem; letter-spacing:.2px;
+  color: var(--bs-body-color);
+}
+.brand-title:hover{ color: var(--brand); text-decoration: none; }
+
+/* NAV pill */
+.app-nav .btn { border-radius: 999px; }
+
+/* Avatar sesión (solo autenticado) */
+.btn-ghost{ background:transparent; border:1px solid var(--bs-border-color) }
+.status-dot{
+  position:absolute; right:0; bottom:0; width:8px; height:8px; border-radius:50%;
+  background:#22c55e; box-shadow:0 0 0 2px var(--bs-body-bg);
+}
+
+/* Switch DAY/NIGHT — compacto, sin texto */
+.theme-switch{
+  position:relative; width:56px; height:32px; border-radius:999px;
+  background:#2b3035; display:inline-flex; align-items:center; padding:4px;
+  cursor:pointer; user-select:none; border:1px solid var(--bs-border-color);
+}
+.theme-switch .knob{
+  position:absolute; top:4px; left:4px; width:24px; height:24px;
+  border-radius:50%; background:#fff; display:grid; place-items:center; transition:left .22s ease;
+}
+.theme-switch svg{width:14px; height:14px; color:#111}
+.theme-switch .sun{display:none;}
+[data-bs-theme="light"] .theme-switch{background:#e9ecef;}
+[data-bs-theme="light"] .theme-switch .knob{ left: calc(100% - 28px); }
+[data-bs-theme="light"] .theme-switch .sun{display:block;}
+[data-bs-theme="light"] .theme-switch .moon{display:none;}
+
+/* FORM acabado */
+.form-control, .btn { border-radius: 12px; }
+.input-group .btn { border-radius: 12px; }
+
+/* AUTH views (login/register) */
+.auth-grid { min-height: 70vh; }
+.split-line { border-left: 1px solid var(--bs-border-color); }
+.logo-big { max-width: 90%; opacity: .95; }
+@media (max-width: 992px) { .split-line { border-left: 0; } }

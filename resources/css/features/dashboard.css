@@ -1,60 +1,93 @@
-/* ====== PALETA (coral GLR) ====== */
-/* base */
-:root { --brand: #FA785F; }
-/* matices usando color-mix (fallbacks incluidos) */
-:root { --brand-600: #f46b50; --brand-700: #e45d44; --brand-soft: #ffe3dd; }
-@supports (color: color-mix(in srgb, #000 10%, #fff)) {
-  :root {
-    --brand-600: color-mix(in srgb, var(--brand) 92%, black);
+/* ====== PALETA GLR ====== */
+:root{ --brand:#FA785F; --brand-700:#e45d44; --brand-soft:#ffe3dd; }
+@supports (color: color-mix(in srgb, red, white)){
+  :root{
     --brand-700: color-mix(in srgb, var(--brand) 85%, black);
     --brand-soft: color-mix(in srgb, var(--brand) 16%, white);
   }
 }
 
-/* modo oscuro/claro: que respeten el background de Bootstrap */
-[data-bs-theme="dark"] .card-elev { background: var(--bs-dark-bg-subtle); }
-[data-bs-theme="light"] .card-elev { background: var(--bs-body-bg); }
-
-/* ====== UTILIDADES ====== */
-.bg-brand       { background-color: var(--brand) !important; }
-.bg-brand-700   { background-color: var(--brand-700) !important; }
-.bg-brand-soft  { background-color: var(--brand-soft) !important; }
-.text-brand     { color: var(--brand) !important; }
-
-.btn-brand {
-  --bs-btn-bg: var(--brand);
-  --bs-btn-border-color: var(--brand);
-  --bs-btn-hover-bg: var(--brand-700);
-  --bs-btn-hover-border-color: var(--brand-700);
-  --bs-btn-color: #fff;
+/* ====== BOTONES DE MARCA ====== */
+.btn-brand{
+  --bs-btn-bg:var(--brand); --bs-btn-border-color:var(--brand);
+  --bs-btn-hover-bg:var(--brand-700); --bs-btn-hover-border-color:var(--brand-700);
+  --bs-btn-color:#fff;
 }
-.btn-outline-brand {
-  --bs-btn-color: var(--brand);
-  --bs-btn-border-color: var(--brand);
-  --bs-btn-hover-bg: var(--brand);
-  --bs-btn-hover-border-color: var(--brand);
-  --bs-btn-hover-color: #fff;
+.btn-outline-brand{
+  --bs-btn-color:var(--brand); --bs-btn-border-color:var(--brand);
+  --bs-btn-hover-bg:var(--brand); --bs-btn-hover-border-color:var(--brand);
+  --bs-btn-hover-color:#fff;
 }
 
-/* ====== KPIs ====== */
-.kpi .card-body{ padding:16px }
-.kpi-icon{
-  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
-  background: var(--brand-soft); color: var(--brand-700);
+/* ====== KPI TILES ====== */
+.kpi-tile .card-body{ padding:16px }
+.kpi-icon{ width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:var(--brand-soft); color:var(--brand-700) }
+.kpi-icon svg{ width:22px;height:22px }
+.kpi-label{ font-size:.78rem; color:var(--bs-secondary-color); text-transform:uppercase; letter-spacing:.5px }
+.kpi-value{ font-weight:800; font-size:1.35rem; line-height:1 }
+.kpi-trend{ font-size:.78rem }
+
+/* ====== QUICK BUTTONS (8) ====== */
+.quick-card{
+  display:block; border:1px solid var(--bs-border-color); border-radius:14px; padding:16px;
+  background: var(--bs-body-bg); color: var(--bs-body-color);
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
 }
-.kpi-icon svg{ width:22px;height:22px; }
-.kpi-label{ font-size:.82rem; color: var(--bs-secondary-color); text-transform:uppercase; letter-spacing:.5px }
-.kpi-value{ font-weight:800; font-size:1.4rem; line-height:1 }
-.kpi-trend{ font-size:.8rem }
+.quick-card:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.06); border-color: var(--brand) }
+.qc-icon{ width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand-700) }
+.qc-icon svg{ width:20px;height:20px }
+.qc-title{ margin-top:10px; font-weight:700 }
+.qc-more{ font-size:.8rem; color: var(--bs-secondary-color) }
 
 /* ====== TABLA ====== */
 table thead th{
+  background:var(--brand-soft); color:var(--brand-700);
+  border-bottom:0; text-transform:uppercase; font-size:.78rem; letter-spacing:.4px;
+}
+.bg-brand{ background-color:var(--brand)!important }
+.bg-brand-700{ background-color:var(--brand-700)!important }
+.bg-brand-soft{ background-color:var(--brand-soft)!important }
+.text-brand{ color:var(--brand)!important }
+
+/* ====== OFFCANVAS MENU ====== */
+.offcanvas{ --bs-offcanvas-width: 290px }
+.menu-list{ display:flex; flex-direction:column; padding:6px }
+.menu-item{
+  display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px;
+  text-decoration:none; color:var(--bs-body-color);
+  transition: background .2s ease, transform .1s ease, color .2s ease;
+}
+.menu-item svg{ width:18px;height:18px; opacity:.8 }
+.menu-item:hover{ background:var(--brand-soft); transform: translateX(2px); color:var(--brand-700) }
+.menu-item:active{ transform: translateX(1px) }
+.dot-brand{ width:10px; height:10px; border-radius:50%; background:var(--brand); display:inline-block }
+
+.offcanvas-footer { position: sticky; bottom: 0; background: var(--bs-body-bg); }
+.bg-brand-soft { background: var(--brand-soft)!important; }
+.text-brand { color: var(--brand)!important; }
+
+/* ====== ANIMACIONES SUAVES ====== */
+@keyframes fadeUp { from{ opacity:0; transform: translateY(8px) } to{ opacity:1; transform:none } }
+.reveal{ animation: fadeUp .45s ease both; }
+.reveal:nth-child(2){ animation-delay:.06s } .reveal:nth-child(3){ animation-delay:.12s } .reveal:nth-child(4){ animation-delay:.18s }
+
+/* ====== MODO CLARO/OSCURO ====== */
+[data-bs-theme="dark"] .card-elev{ background: var(--bs-dark-bg-subtle) }
+[data-bs-theme="light"] .card-elev{ background: var(--bs-body-bg) }
+/* Offcanvas: fila de usuario */
+.offcanvas-footer .user { display:flex; align-items:center; gap:12px; }
+
+/* Avatar: tamaño fijo y centrado */
+.offcanvas-footer .avatar{
+  width: 40px; height: 40px; flex: 0 0 40px;
+  display:flex; justify-content:center; align-items:center;
+  border-radius:50%;
   background: var(--brand-soft);
   color: var(--brand-700);
-  border-bottom: 0;
-  text-transform: uppercase;
-  font-size: .78rem;
-  letter-spacing: .4px;
 }
-.badge.bg-brand-soft { background: var(--brand-soft) !important; }
-.text-brand { color: var(--brand) !important; }
+.offcanvas-footer .avatar-icon{ width:18px; height:18px }
+
+/* Texto: nombre y meta alineados */
+.offcanvas-footer .name{ font-weight:700; line-height:1.1 }
+.offcanvas-footer .meta{ margin-top:2px; font-size:.85rem; color: var(--bs-secondary-color) }
